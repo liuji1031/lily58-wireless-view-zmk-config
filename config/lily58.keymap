@@ -84,5 +84,5 @@
 
 &mt {
     tapping-term-ms = <200>; // 200 is the default value
-    require-prior-idle-ms = <50>; // Delay needed before hold-tap can trigger
+    require-prior-idle-ms = <100>; // Delay needed before hold-tap can trigger
 };
