@@ -10,7 +10,7 @@
 
 &mt {
     tapping-term-ms = <200>;
-    require-prior-idle-ms = <100>;
+    require-prior-idle-ms = <200>;
 };
 
 / {
