@@ -9,9 +9,11 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    &mt {
-        tapping-term-ms = <200>; // 200 is the default value
-        require-prior-idle-ms = <100>; // Delay needed before hold-tap can trigger
+    behaviors {
+        &mt {
+            tapping-term-ms = <200>;
+            require-prior-idle-ms = <100>;
+        };
     };
 
     keymap {
