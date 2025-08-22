@@ -78,4 +78,8 @@
 
         extra_3 { status = "reserved"; };
     };
+
+    &mt {
+        tapping-term-ms = <250>; // 200 is the default value
+    };
 };
