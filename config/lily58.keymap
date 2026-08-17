@@ -14,6 +14,10 @@
  * Layers: 0 Base, 1 Lower, 2 Raise, 3 Artist, 4 Game.
  * Keys marked with * in the layout diagrams are hold-taps (&mt, tuned below):
  * TAB holds as shift+tab, SPACE holds as =, ENTER holds as _.
+ *
+ * The right center key cycles through every layer in order. Each layer binds
+ * that position to &to <next layer>, shown as >LOWER, >RAISE, >ARTIST, >GAME
+ * and >BASE in the diagrams, so repeated presses walk 0 -> 1 -> 2 -> 3 -> 4 -> 0.
  */
 
 &mt {
@@ -31,16 +35,16 @@
             // |  ESC  |   1   |   2   |   3   |   4   |   5   |                   |   6   |   7   |   8   |   9   |   0   |  BSPC |
             // |  TAB* |   Q   |   W   |   E   |   R   |   T   |                   |   Y   |   U   |   I   |   O   |   P   |  CAPS |
             // | SHIFT |   A   |   S   |   D   |   F   |   G   |                   |   H   |   J   |   K   |   L   |   ;   |   '   |
-            // |  CTRL |   Z   |   X   |   C   |   V   |   B   | CYCLE_BT || TG_ART|   N   |   M   |   ,   |   .   |   /   |   \   |
-            //                      |  GUI  |  ALT  | LOWER | SPACE*|  | ENTER*| RAISE | PG_UP | PG_DN |
+            // |  CTRL |   Z   |   X   |   C   |   V   |   B   | BT_NXT|  | >LOWER |   N   |   M   |   ,   |   .   |   /   |   \   |
+            //                         |  GUI  |  ALT  | LOWER | SPACE*|  | ENTER* | RAISE | PG_UP | PG_DN |
 
             display-name = "Base";
             bindings = <
-&kp ESC           &kp N1  &kp N2  &kp N3    &kp N4    &kp N5                                  &kp N6  &kp N7     &kp N8     &kp N9   &kp N0    &kp BSPC
-&mt LS(TAB) TAB   &kp Q   &kp W   &kp E     &kp R     &kp T                                   &kp Y   &kp U      &kp I      &kp O    &kp P     &kp CAPS
-&kp LSHFT         &kp A   &kp S   &kp D     &kp F     &kp G                                   &kp H   &kp J      &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL         &kp Z   &kp X   &kp C     &kp V     &kp B   &bt BT_NXT       &tog 3         &kp N   &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp BSLH
-                                  &kp LGUI  &kp LALT  &mo 1   &mt EQUAL SPACE  &mt UNDER RET  &mo 2   &kp PG_UP  &kp PG_DN
+&kp ESC          &kp N1  &kp N2  &kp N3    &kp N4    &kp N5                                  &kp N6  &kp N7     &kp N8     &kp N9   &kp N0    &kp BSPC
+&mt LS(TAB) TAB  &kp Q   &kp W   &kp E     &kp R     &kp T                                   &kp Y   &kp U      &kp I      &kp O    &kp P     &kp CAPS
+&kp LSHFT        &kp A   &kp S   &kp D     &kp F     &kp G                                   &kp H   &kp J      &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LCTRL        &kp Z   &kp X   &kp C     &kp V     &kp B   &bt BT_NXT       &to 1          &kp N   &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp BSLH
+                                 &kp LGUI  &kp LALT  &mo 1   &mt EQUAL SPACE  &mt UNDER RET  &mo 2   &kp PG_UP  &kp PG_DN
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -51,16 +55,16 @@
             // |   ~   |       |  MUTE |  VOL+ |       |       |                   | PSCRN |       |  NUM  |   7   |   8   |   9   |
             // |   `   |       |       |  VOL- |   {   |   }   |                   |       |       |       |   4   |   5   |   6   |
             // | SHIFT |       |       |       |   [   |   ]   |                   |       |       |       |   1   |   2   |   3   |
-            // |  CTRL |       |       |       |       |       |       |  | BT_NXT |       |       |       |   0   |       |  BSPC |
+            // |  CTRL |       |       |       |       |       |       |  | >RAISE |       |       |       |   0   |       |  BSPC |
             //                         |  GUI  |       |       | ENTER |  |   =    |TG_GAME|  HOME |  END  |
 
             display-name = "Lower";
             bindings = <
-&kp TILDE  &none  &kp C_MUTE  &kp C_VOLUME_UP    &none     &none                          &kp PSCRN  &none     &kp KP_NUM  &kp KP_N7  &kp KP_N8  &kp KP_N9
-&kp GRAVE  &none  &none       &kp C_VOLUME_DOWN  &kp LBRC  &kp RBRC                       &none      &none     &none       &kp KP_N4  &kp KP_N5  &kp KP_N6
-&kp LSHFT  &none  &none       &none              &kp LBKT  &kp RBKT                       &none      &none     &none       &kp KP_N1  &kp KP_N2  &kp KP_N3
-&kp LCTRL  &none  &none       &none              &none     &none     &none    &bt BT_NXT   &none      &none     &none       &kp KP_N0  &none      &kp BSPC
-                              &kp LGUI           &none     &none     &kp RET  &kp EQUAL    &tog 4     &kp HOME  &kp END
+&kp TILDE  &none  &kp C_MUTE  &kp C_VOLUME_UP    &none     &none                         &kp PSCRN  &none     &kp KP_NUM  &kp KP_N7  &kp KP_N8  &kp KP_N9
+&kp GRAVE  &none  &none       &kp C_VOLUME_DOWN  &kp LBRC  &kp RBRC                      &none      &none     &none       &kp KP_N4  &kp KP_N5  &kp KP_N6
+&kp LSHFT  &none  &none       &none              &kp LBKT  &kp RBKT                      &none      &none     &none       &kp KP_N1  &kp KP_N2  &kp KP_N3
+&kp LCTRL  &none  &none       &none              &none     &none     &none    &to 2      &none      &none     &none       &kp KP_N0  &none      &kp BSPC
+                              &kp LGUI           &none     &none     &kp RET  &kp EQUAL  &tog 4     &kp HOME  &kp END
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -71,16 +75,16 @@
             // |       |   F1  |   F2  |   F3  |   F4  |   F5  |                   | BT_CLR|       |       |       |       |  DEL  |
             // |       |   F6  |   F7  |   F8  |   F9  |  F10  |                   |   +   |       |   ^   |       |       |       |
             // |       |  F11  |  F12  |       |       |       |                   |   -   |   <-  |   v   |   ->  |       |       |
-            // |  CTRL |       |       |       |       |       |       |   |       |       |       |       |       |       |       |
+            // |  CTRL |       |       |       |       |       |       |   |>ARTIST|       |       |       |       |       |       |
             //                         |  GUI  |       |  ALT  |       |   |       |       |       |       |
 
             display-name = "Raise";
             bindings = <
-&none      &kp F1   &kp F2   &kp F3    &kp F4  &kp F5                    &bt BT_CLR  &none     &none     &none      &none  &kp DEL
-&none      &kp F6   &kp F7   &kp F8    &kp F9  &kp F10                   &kp PLUS    &none     &kp UP    &none      &none  &none
-&none      &kp F11  &kp F12  &none     &none   &none                     &kp MINUS   &kp LEFT  &kp DOWN  &kp RIGHT  &none  &none
-&kp LCTRL  &none    &none    &none     &none   &none     &none    &none  &none       &none     &none     &none      &none  &none
-                             &kp LGUI  &none   &kp LALT  &none    &none  &none       &none     &none
+&none      &kp F1   &kp F2   &kp F3    &kp F4  &kp F5                  &bt BT_CLR  &none     &none     &none      &none  &kp DEL
+&none      &kp F6   &kp F7   &kp F8    &kp F9  &kp F10                 &kp PLUS    &none     &kp UP    &none      &none  &none
+&none      &kp F11  &kp F12  &none     &none   &none                   &kp MINUS   &kp LEFT  &kp DOWN  &kp RIGHT  &none  &none
+&kp LCTRL  &none    &none    &none     &none   &none     &none  &to 3  &none       &none     &none     &none      &none  &none
+                             &kp LGUI  &none   &kp LALT  &none  &none  &none       &none     &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -91,16 +95,16 @@
             // |       |   1   |   2   |   3   |   4   |   5   |                   |       |       |       |       |       |       |
             // | S+CTRL|   Q   |       |       |       |       |                   |       |       |       |       |       |       |
             // | SHIFT |       |       |       |       |       |                   |       |       |       |       |       |       |
-            // |       |  UNDO |       |       |       |       |  REDO |   |       |       |       |       |       |       |       |
+            // |       |  UNDO |       |       |       |       |  REDO |   | >GAME |       |       |       |       |       |       |
             //                         |       |       |  ALT  | SPACE |   |       |       |       |       |
 
             display-name = "Artist";
             bindings = <
-&trans         &kp N1     &kp N2  &kp N3  &kp N4  &kp N5                            &trans  &trans  &trans  &trans  &trans  &trans
-&kp LS(LCTRL)  &kp Q      &trans  &trans  &trans  &trans                            &trans  &trans  &trans  &trans  &trans  &trans
-&kp LSHFT      &trans     &trans  &trans  &trans  &trans                            &trans  &trans  &trans  &trans  &trans  &trans
-&trans         &kp LC(Z)  &trans  &trans  &trans  &trans     &kp LS(LC(Z))  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                  &trans  &trans  &kp LALT   &kp SPACE      &trans  &trans  &trans  &trans
+&trans         &kp N1     &kp N2  &kp N3  &kp N4  &kp N5                           &trans  &trans  &trans  &trans  &trans  &trans
+&kp LS(LCTRL)  &kp Q      &trans  &trans  &trans  &trans                           &trans  &trans  &trans  &trans  &trans  &trans
+&kp LSHFT      &trans     &trans  &trans  &trans  &trans                           &trans  &trans  &trans  &trans  &trans  &trans
+&trans         &kp LC(Z)  &trans  &trans  &trans  &trans    &kp LS(LC(Z))  &to 4   &trans  &trans  &trans  &trans  &trans  &trans
+                                  &trans  &trans  &kp LALT  &kp SPACE      &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -111,16 +115,16 @@
             // |       |       |       |       |       |       |                   |       |       |       |       |       |       |
             // |  TAB  |       |       |       |       |       |                   |       |       |       |       |       |       |
             // | SHIFT |       |       |       |       |       |                   |       |       |       |       |       |       |
-            // |       |       |       |       |       |       |       |   |       |       |       |       |       |       |       |
-            //                      |       |  ALT  |  RALT | SPACE |  |       |       |       |       |
+            // |       |       |       |       |       |       |       |   | >BASE |       |       |       |       |       |       |
+            //                         |       |       |  RALT | SPACE |   |       |       |       |       |
 
             display-name = "Game";
             bindings = <
-&trans     &trans  &trans  &trans  &trans    &trans                        &trans  &trans  &trans  &trans  &trans  &trans
-&kp TAB    &trans  &trans  &trans  &trans    &trans                        &trans  &trans  &trans  &trans  &trans  &trans
-&kp LSHFT  &trans  &trans  &trans  &trans    &trans                        &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans  &trans  &trans  &trans    &trans     &trans    &trans   &trans  &trans  &trans  &trans  &trans  &trans
-                           &trans  &trans  &kp RALT    &kp SPACE  &trans   &trans  &trans  &trans
+&trans     &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&kp TAB    &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&kp LSHFT  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans  &trans  &trans  &trans  &trans    &trans     &to 0   &trans  &trans  &trans  &trans  &trans  &trans
+                           &trans  &trans  &kp RALT  &kp SPACE  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
