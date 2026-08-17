@@ -11,7 +11,7 @@
 /*
  * Merged from the ZMK Studio export lily58-2026-08-16.keymap.
  *
- * Layers: 0 Base, 1 Lower, 2 Raise, 3 Artist, 4 Game.
+ * Layers: 0 Base, 1 Lower, 2 Raise, 3 Artist, 4 Game, 5 Colemak.
  * Keys marked with * in the layout diagrams are hold-taps (&mt, tuned below):
  * TAB holds as shift+tab, SPACE holds as =, ENTER holds as _.
  *
@@ -123,8 +123,28 @@
 &trans     &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
 &kp TAB    &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
 &kp LSHFT  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans  &trans  &trans  &trans  &trans    &trans     &to 0   &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans  &trans  &trans  &trans  &trans    &trans     &to 5   &trans  &trans  &trans  &trans  &trans  &trans
                            &trans  &trans  &kp RALT  &kp SPACE  &trans  &trans  &trans  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        colemak_dh {
+            // ------------------------------------------------------------------------------------------------------------
+            // |       |       |       |       |       |       |                   |       |       |       |       |       |       |
+            // |       |   Q   |   W   |   F   |   P   |   B   |                   |   J   |   L   |   U   |   Y   |   ;   |       |
+            // |       |   A   |   R   |   S   |   T   |   G   |                   |   M   |   N   |   E   |   I   |   O   |       |
+            // |       |   Z   |   X   |   C   |   D   |   V   |       |   | >BASE |   K   |   H   |   ,   |   .   |   /   |       |
+            //                         |       |       |       |       |   |       |       |       |       |
+
+            display-name = "colemak";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans     &trans   &trans    &trans
+&trans  &kp Q   &kp W   &kp F   &kp P   &kp B                   &kp J   &kp L   &kp U      &kp Y    &kp SEMI  &trans
+&trans  &kp A   &kp R   &kp S   &kp T   &kp G                   &kp M   &kp N   &kp E      &kp I    &kp O     &trans
+&trans  &kp Z   &kp X   &kp C   &kp D   &kp V   &trans  &to 0   &kp K   &kp H   &kp COMMA  &kp DOT  &kp FSLH  &trans
+                        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
