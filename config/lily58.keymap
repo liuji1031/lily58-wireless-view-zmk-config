@@ -65,7 +65,7 @@
 &kp LSHFT  &none      &none       &none              &kp LBKT  &kp RBKT                      &none      &none     &none       &kp KP_N1  &kp KP_N2  &kp KP_N3
 &kp LCTRL  &none      &none       &none              &none     &none     &none    &to 2      &none      &none     &none       &kp KP_N0  &none      &kp BSPC
                                   &kp LGUI           &none     &none     &none    &none  &none      &kp HOME  &kp END
-            >;
+            >;`````
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
@@ -138,7 +138,7 @@
             // |       |   Z   |   X   |   C   |   D   |   V   |       |   | >BASE |   K   |   H   |   ,   |   .   |   /   |       |
             //                         |       |       |       |       |   |       |       |       |       |
 
-            display-name = "colemak";
+            display-name = "Colemak";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans     &trans   &trans    &trans
 &trans  &kp Q   &kp W   &kp F   &kp P   &kp B                   &kp J   &kp L   &kp U      &kp Y    &kp SEMI  &trans
