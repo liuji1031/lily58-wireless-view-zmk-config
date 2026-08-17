@@ -56,7 +56,7 @@
             // |  CAPS |       |       |  VOL- |   {   |   }   |                   |       |       |       |   4   |   5   |   6   |
             // | SHIFT |       |       |       |   [   |   ]   |                   |       |       |       |   1   |   2   |   3   |
             // |  CTRL |       |       |       |       |       |       |  | >RAISE |       |       |       |   0   |       |  BSPC |
-            //                         |  GUI  |       |       | ENTER |  |   =    |TG_GAME|  HOME |  END  |
+            //                         |  GUI  |       |       | ENTER |  |   =    |       |  HOME |  END  |
 
             display-name = "Lower";
             bindings = <
@@ -64,7 +64,7 @@
 &kp CAPS   &none      &none       &kp C_VOLUME_DOWN  &kp LBRC  &kp RBRC                      &none      &none     &none       &kp KP_N4  &kp KP_N5  &kp KP_N6
 &kp LSHFT  &none      &none       &none              &kp LBKT  &kp RBKT                      &none      &none     &none       &kp KP_N1  &kp KP_N2  &kp KP_N3
 &kp LCTRL  &none      &none       &none              &none     &none     &none    &to 2      &none      &none     &none       &kp KP_N0  &none      &kp BSPC
-                                  &kp LGUI           &none     &none     &kp RET  &kp EQUAL  &tog 4     &kp HOME  &kp END
+                                  &kp LGUI           &none     &none     &kp RET  &kp EQUAL  &none      &kp HOME  &kp END
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -92,16 +92,16 @@
 
         artist_layer {
             // ------------------------------------------------------------------------------------------------------------
-            // |       |   1   |   2   |   3   |   4   |   5   |                   |       |       |       |       |       |       |
-            // | S+CTRL|   Q   |       |       |       |       |                   |       |       |       |       |       |       |
+            // |       |       |       |       |       |       |                   |       |       |       |       |       |       |
+            // | S+CTRL|       |       |       |       |       |                   |       |       |       |       |       |       |
             // | SHIFT |       |       |       |       |       |                   |       |       |       |       |       |       |
             // |       |  UNDO |       |       |       |       |  REDO |   | >GAME |       |       |       |       |       |       |
             //                         |       |       |  ALT  | SPACE |   |       |       |       |       |
 
             display-name = "Artist";
             bindings = <
-&trans         &kp N1     &kp N2  &kp N3  &kp N4  &kp N5                           &trans  &trans  &trans  &trans  &trans  &trans
-&kp LS(LCTRL)  &kp Q      &trans  &trans  &trans  &trans                           &trans  &trans  &trans  &trans  &trans  &trans
+&trans         &kp trans  &trans  &trans  &trans  &trans                           &trans  &trans  &trans  &trans  &trans  &trans
+&kp LS(LCTRL)  &kp trans  &trans  &trans  &trans  &trans                           &trans  &trans  &trans  &trans  &trans  &trans
 &kp LSHFT      &trans     &trans  &trans  &trans  &trans                           &trans  &trans  &trans  &trans  &trans  &trans
 &trans         &kp LC(Z)  &trans  &trans  &trans  &trans    &kp LS(LC(Z))  &to 4   &trans  &trans  &trans  &trans  &trans  &trans
                                   &trans  &trans  &kp LALT  &kp SPACE      &trans  &trans  &trans  &trans
